@@ -1,6 +1,18 @@
 import TelegramBot from "node-telegram-bot-api";
 import butons from "./bot-buttons.js";
 import chatManager from "./chat-manager.js";
+import express from "express";
+
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Bot ishga tushdi!");
+});
+
+app.listen(port, () => {
+  console.log(`Server ${port} portda ishga tushdi!`);
+});
 
 const token = "8246092694:AAG1JPYrxd69MlUtFeJtQ8tPyfuqY1IbVy8";
 const bot = new TelegramBot(token, { polling: true });
