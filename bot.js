@@ -84,7 +84,7 @@ Quyidagi tugma orqali meni kanalga qo'shing va men ishlashim uchun *admin* huquq
 
           setTimeout(() => {
             bot.deleteMessage(chatId, warning.message_id).catch(() => {});
-          }, 5000);
+          }, 50000);
           return; // Reklama bo'lsa, pastdagi AI kodiga o'tmaydi
         }
       } catch (error) {
@@ -108,3 +108,4 @@ Quyidagi tugma orqali meni kanalga qo'shing va men ishlashim uchun *admin* huquq
     }
   }
 });
+
