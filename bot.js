@@ -45,6 +45,25 @@ Quyidagi tugma orqali meni kanalga qo'shing va men ishlashim uchun *admin* huquq
     return;
   }
 
+  if (msg.new_chat_members) {
+    try {
+      await bot.deleteMessage(chatId, msg.message_id);
+      bot.sendMessage(
+        chatId,
+        `Salom! ${msg.new_chat_members[0].first_name} guruhga xush kelibsiz`
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  if (msg.left_chat_member) {
+    try {
+      await bot.deleteMessage(chatId, msg.message_id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   // 2. Guruh va Superguruhlar uchun mantiq
   if (chatType === "group" || chatType === "supergroup") {
     // --- REKLAMA TEKSHIRUVI ---
