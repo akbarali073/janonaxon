@@ -101,6 +101,12 @@ Quyidagi tugma orqali meni kanalga qo'shing va men ishlashim uchun *admin* huquq
       lowerText.includes("janonaxon") ||
       lowerText.includes("janona") ||
       lowerText.includes("salom") ||
+      lowerText.includes("sax") ||
+      lowerText.includes("lich") ||
+      lowerText.includes("sex") ||
+      lowerText.includes("seks") ||
+      lowerText.includes("qiz") ||
+      lowerText.includes("lic") ||
       lowerText.includes("qalaysan");
 
     if (isReplyToBot || mentionsBot) {
@@ -108,4 +114,5 @@ Quyidagi tugma orqali meni kanalga qo'shing va men ishlashim uchun *admin* huquq
     }
   }
 });
+
 
