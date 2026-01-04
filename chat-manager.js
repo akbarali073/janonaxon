@@ -1,9 +1,7 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
 
-const groq = new GoogleGenerativeAI("AIzaSyCD3rg5w4vRq1MorwCtdrMzovx2ZC9a3Xw");
-
-const model = groq.getGenerativeModel({
-  model: "gemini-2.5-flash",
+const groq = new Groq({
+  apiKey: "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",
 });
 
 const chatManager = {
@@ -66,19 +64,27 @@ Foydalanuvchi: ${firstName}
 Xabar: "${text}"
 
 Faqat Janona sifatida javob ber.
+
 `;
 
-      const result = await model.generateContent(prompt);
-      const aiText = result.response.text();
+      const completion = await groq.chat.completions.create({
+        model: "llama-3.1-8b-instant",
+        messages: [
+          { role: "system", content: "Sen Janonasan." },
+          { role: "user", content: prompt },
+        ],
+        temperature: 0.9,
+      });
+
+      const aiText = completion.choices[0].message.content;
 
       await bot.sendMessage(chatId, aiText, {
         reply_to_message_id: msg.message_id,
       });
     } catch (error) {
-      console.error("Gemini AI xatosi:", error.message);
+      console.error("Groq AI xatosi:", error.message);
     }
   },
 };
 
 export default chatManager;
-
